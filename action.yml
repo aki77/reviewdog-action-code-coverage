@@ -1,4 +1,4 @@
-name: Reviewdog action lcov
+name: Reviewdog action code coverage
 description: Warns of lines of code not covered by the test.
 branding:
   icon: code
