@@ -4,6 +4,10 @@ branding:
   icon: code
   color: blue
 inputs:
+  github_token:
+    description: "GITHUB_TOKEN"
+    default: "${{ github.token }}"
+    required: false
   lcov_path:
     description: lcov file path
     required: true
@@ -28,6 +32,8 @@ runs:
         curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.1.0/lcov_to_checkstyle_v0.1.0_x86_64-unknown-linux-musl.zip
         unzip lcov_to_checkstyle_v0.1.0_x86_64-unknown-linux-musl.zip
     - id: reviewdog
+      env:
+        REVIEWDOG_GITHUB_API_TOKEN: ${{ inputs.github_token }}
       run: |
         ./lcov_to_checkstyle ${{ inputs.lcov-path }} | reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }}
       shell: bash
