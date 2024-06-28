@@ -1,0 +1,33 @@
+name: Reviewdog action lcov
+description: Warns of lines of code not covered by the test.
+branding:
+  icon: code
+  color: blue
+inputs:
+  lcov_path:
+    description: lcov file path
+    required: true
+  reporter:
+    description: |
+      Reporter of reviewdog command [github-check,github-pr-check,github-pr-review].
+      Default is `github-pr-review`.
+    default: "github-pr-review"
+    required: false
+  tool_name:
+    description: "Tool name to use for reviewdog reporter"
+    default: "code-coverage"
+    required: false
+runs:
+  using: composite
+  steps:
+    - uses: reviewdog/action-setup@v1
+      with:
+        reviewdog_version: latest
+    - shell: bash
+      run: |
+        curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.1.0/lcov_to_checkstyle_v0.1.0_x86_64-unknown-linux-musl.zip
+        unzip lcov_to_checkstyle_v0.1.0_x86_64-unknown-linux-musl.zip
+    - id: reviewdog
+      run: |
+        ./lcov_to_checkstyle ${{ inputs.lcov-path }} | reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }}
+      shell: bash
