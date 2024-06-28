@@ -35,5 +35,5 @@ runs:
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ inputs.github_token }}
       run: |
-        ./lcov_to_checkstyle ${{ inputs.lcov-path }} | reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }}
+        ./lcov_to_checkstyle ${{ inputs.lcov_path }} | reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }}
       shell: bash
