@@ -1,4 +1,4 @@
-name: Reviewdog action code coverage
+name: Code Coverage with reviewdog
 description: Warns of lines of code not covered by the test.
 branding:
   icon: code
