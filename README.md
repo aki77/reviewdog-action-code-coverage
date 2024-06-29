@@ -29,3 +29,4 @@ See [action.yml](action.yml)
 | `lcov_path` | lcov file path |  | yes |
 | `reporter` | Reporter of reviewdog command [github-check,github-pr-check,github-pr-review]. | `github-pr-review` | no |
 | `tool_name` | Tool name to use for reviewdog reporter | `code-coverage` | no |
+| `delete_previous_comments` | Delete previous comments made by the same tool | `true` | no |

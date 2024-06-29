@@ -21,6 +21,11 @@ inputs:
     description: "Tool name to use for reviewdog reporter"
     default: "code-coverage"
     required: false
+  delete_previous_comments:
+    description: "Delete previous comments made by the same tool."
+    default: "true"
+    required: false
+
 runs:
   using: composite
   steps:
@@ -31,6 +36,11 @@ runs:
       run: |
         curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.1.0/lcov_to_checkstyle_v0.1.0_x86_64-unknown-linux-musl.zip
         unzip lcov_to_checkstyle_v0.1.0_x86_64-unknown-linux-musl.zip
+    - uses: aki77/delete-pr-comments-action@v2
+      if: inputs.delete_previous_comments == 'true'
+      with:
+        bodyContains: "[${{ inputs.tool_name }}]"
+        noReply: "true"
     - id: reviewdog
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ inputs.github_token }}
