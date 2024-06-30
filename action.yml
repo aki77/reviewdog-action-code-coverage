@@ -9,7 +9,7 @@ inputs:
     default: "${{ github.token }}"
     required: false
   lcov_path:
-    description: lcov file path
+    description: Lcov files path. Support for glob pattern.
     required: true
   reporter:
     description: |
@@ -34,8 +34,13 @@ runs:
         reviewdog_version: latest
     - shell: bash
       run: |
-        curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.2.0/lcov_to_checkstyle_v0.2.0_x86_64-unknown-linux-musl.zip
-        unzip lcov_to_checkstyle_v0.2.0_x86_64-unknown-linux-musl.zip
+        curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.3.0/lcov_to_checkstyle_v0.3.0_x86_64-unknown-linux-musl.zip
+        unzip lcov_to_checkstyle_v0.3.0_x86_64-unknown-linux-musl.zip
+    - name: Install lcov-util from crates.io
+      uses: baptiste0928/cargo-install@904927dbe77864e0f2281519fe9d5bd097a220b3
+      with:
+        crate: lcov-util
+        version: "0.2.1"
     - uses: aki77/delete-pr-comments-action@v2
       if: inputs.delete_previous_comments == 'true'
       with:
@@ -45,5 +50,7 @@ runs:
       env:
         REVIEWDOG_GITHUB_API_TOKEN: ${{ inputs.github_token }}
       run: |
-        ./lcov_to_checkstyle ${{ inputs.lcov_path }} | reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }}
+        lcov-merge $(ls ${{ inputs.lcov_path }}) | \
+          ./lcov_to_checkstyle | \
+          reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }}
       shell: bash
