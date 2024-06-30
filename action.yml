@@ -34,8 +34,8 @@ runs:
         reviewdog_version: latest
     - shell: bash
       run: |
-        curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.1.0/lcov_to_checkstyle_v0.1.0_x86_64-unknown-linux-musl.zip
-        unzip lcov_to_checkstyle_v0.1.0_x86_64-unknown-linux-musl.zip
+        curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.2.0/lcov_to_checkstyle_v0.2.0_x86_64-unknown-linux-musl.zip
+        unzip lcov_to_checkstyle_v0.2.0_x86_64-unknown-linux-musl.zip
     - uses: aki77/delete-pr-comments-action@v2
       if: inputs.delete_previous_comments == 'true'
       with:
