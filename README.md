@@ -14,9 +14,9 @@ This promotes rigorous testing practices and helps maintain high code quality st
 
 ```yml
 steps:
-  - uses: aki77/reviewdog-action-code-coverage@v1
+  - uses: aki77/reviewdog-action-code-coverage@v2
     with:
-      lcov_path: coverage/lcov/sample.lcov
+      lcov_path: ./coverage/**/*.lcov
 ```
 
 ## Inputs
@@ -26,7 +26,7 @@ See [action.yml](action.yml)
 | Name | Description | Default | Required |
 | - | - | - | - |
 | `github_token` | GITHUB_TOKEN | `${{ github.token }}` | no |
-| `lcov_path` | lcov file path |  | yes |
+| `lcov_path` | Lcov files path. Support for glob pattern. |  | yes |
 | `reporter` | Reporter of reviewdog command [github-check,github-pr-check,github-pr-review]. | `github-pr-review` | no |
 | `tool_name` | Tool name to use for reviewdog reporter | `code-coverage` | no |
 | `delete_previous_comments` | Delete previous comments made by the same tool | `true` | no |
