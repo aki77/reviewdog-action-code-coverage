@@ -37,7 +37,7 @@ runs:
         curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.3.0/lcov_to_checkstyle_v0.3.0_x86_64-unknown-linux-musl.zip
         unzip lcov_to_checkstyle_v0.3.0_x86_64-unknown-linux-musl.zip
     - name: Install lcov-util from crates.io
-      uses: baptiste0928/cargo-install@904927dbe77864e0f2281519fe9d5bd097a220b3
+      uses: baptiste0928/cargo-install@bd2e5672d31e2b9c34080481d02b5506997c2828
       with:
         crate: lcov-util
         version: "0.2.1"
