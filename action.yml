@@ -62,6 +62,6 @@ runs:
         lcov-merge $(ls ${{ inputs.lcov_path }}) | \
           ./lcov_to_checkstyle | \
           reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }} \
-            -fail-level ${{ inputs.fail_level }} -filter-mode ${{ inputs.filter_mode }}
+            -fail-level=${{ inputs.fail_level }} -filter-mode=${{ inputs.filter_mode }}
 
       shell: bash
