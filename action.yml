@@ -4,6 +4,15 @@ branding:
   icon: code
   color: blue
 inputs:
+  fail_level:
+    description: |
+      Unless none, exit code 1 for reviewdog if it finds at least 1 issue with severity greater than or equal to the
+      given level [info,warning,error]
+    default: "none"
+  filter_mode:
+    description: |
+      Filtering mode for the reviewdog command [added,diff_context,file,nofilter]
+    default: "added"
   github_token:
     description: "GITHUB_TOKEN"
     default: "${{ github.token }}"
@@ -52,5 +61,7 @@ runs:
       run: |
         lcov-merge $(ls ${{ inputs.lcov_path }}) | \
           ./lcov_to_checkstyle | \
-          reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }}
+          reviewdog -f=checkstyle -name=${{ inputs.tool_name }} -reporter=${{ inputs.reporter }} \
+            -fail_level ${{ inputs.fail_level }} -filter_mode ${{ inputs.filter_mode }}
+
       shell: bash
