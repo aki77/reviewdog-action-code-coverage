@@ -25,7 +25,7 @@ See [action.yml](action.yml)
 
 | Name | Description | Default | Required |
 | - | - | - | - |
-| `fail_level` | Unless none, exit code 1 for reviewdog if it finds at least 1 issue with severity greater than or equal to the given level. | | `none` | no |
+| `fail_level` | Unless `none`, exit code 1 for reviewdog if it finds at least 1 issue with severity greater than or equal to the given level. | `none` | no |
 | `filter_mode` | Filtering mode for the reviewdog command [`added`, `diff_context`, `file`, `nofilter`] | `added` | no |
 | `github_token` | GITHUB_TOKEN | `${{ github.token }}` | no |
 | `lcov_path` | Lcov files path. Support for glob pattern. |  | yes |
