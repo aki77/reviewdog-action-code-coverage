@@ -43,8 +43,37 @@ runs:
         reviewdog_version: latest
     - shell: bash
       run: |
-        curl -OL https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.3.0/lcov_to_checkstyle_v0.3.0_x86_64-unknown-linux-musl.zip
-        unzip lcov_to_checkstyle_v0.3.0_x86_64-unknown-linux-musl.zip
+        # Determine OS and architecture
+        OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+        ARCH=$(uname -m)
+        
+        case "$OS" in
+          linux)
+            case "$ARCH" in
+              x86_64)
+                BINARY="lcov_to_checkstyle-x86_64-unknown-linux-musl"
+                ;;
+              aarch64|arm64)
+                BINARY="lcov_to_checkstyle-aarch64-unknown-linux-musl"
+                ;;
+              *)
+                echo "Unsupported Linux architecture: $ARCH"
+                exit 1
+                ;;
+            esac
+            ;;
+          darwin)
+            BINARY="lcov_to_checkstyle-x86_64-apple-darwin"
+            ;;
+          *)
+            echo "Unsupported OS: $OS"
+            exit 1
+            ;;
+        esac
+        
+        echo "Downloading $BINARY for $OS/$ARCH"
+        curl -L -o lcov_to_checkstyle "https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.4.0/$BINARY"
+        chmod +x lcov_to_checkstyle
     - name: Install lcov-util from crates.io
       uses: baptiste0928/cargo-install@e38323ef017552d7f7af73a3f4db467f278310ed
       with:
