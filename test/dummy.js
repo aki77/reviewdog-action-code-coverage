@@ -1,10 +1,10 @@
-function dummy3Function() {
-  console.log("This line is executed. (dummy3Function)");
-  console.log("This line is not executed. (dummy3Function)");
-  console.log("This line is not executed. (dummy3Function)");
-  console.log("Another executed line. (dummy3Function)");
-  console.log("Yet another executed line. (dummy3Function)");
-  console.log("This line is not executed. (dummy3Function)");
+function dummy4Function() {
+  console.log("This line is executed. (dummy4Function)");
+  console.log("This line is not executed. (dummy4Function)");
+  console.log("This line is not executed. (dummy4Function)");
+  console.log("Another executed line. (dummy4Function)");
+  console.log("Yet another executed line. (dummy4Function)");
+  console.log("This line is not executed. (dummy4Function)");
 }
 
-dummy3Function();
+dummy4Function();
