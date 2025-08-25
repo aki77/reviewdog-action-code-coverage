@@ -38,7 +38,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: reviewdog/action-setup@v1
+    - uses: reviewdog/action-setup@e04ffabe3898a0af8d0fb1af00c188831c4b5893 # v1.3.2
       with:
         reviewdog_version: latest
     - shell: bash
@@ -79,7 +79,7 @@ runs:
       with:
         crate: lcov-util
         version: "0.2.1"
-    - uses: aki77/delete-pr-comments-action@v3
+    - uses: aki77/delete-pr-comments-action@ef208cb51cacbff428349ac715a337b2a07d62ef # v3.0.0
       if: inputs.delete_previous_comments == 'true'
       with:
         bodyContains: "[${{ inputs.tool_name }}]"
