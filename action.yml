@@ -75,7 +75,7 @@ runs:
         curl -L -o lcov_to_checkstyle "https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.4.0/$BINARY"
         chmod +x lcov_to_checkstyle
     - name: Install lcov-util from crates.io
-      uses: baptiste0928/cargo-install@e38323ef017552d7f7af73a3f4db467f278310ed
+      uses: baptiste0928/cargo-install@b687c656bda5733207e629b50a22bf68974a0305
       with:
         crate: lcov-util
         version: "0.2.1"
