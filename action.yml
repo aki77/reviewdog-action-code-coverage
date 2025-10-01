@@ -79,7 +79,7 @@ runs:
       with:
         crate: lcov-util
         version: "0.2.1"
-    - uses: aki77/delete-pr-comments-action@ef208cb51cacbff428349ac715a337b2a07d62ef # v3.0.0
+    - uses: aki77/delete-pr-comments-action@410baf9bdfd6aa97206d7d723745ce2394e62513 # v3.1.0
       if: inputs.delete_previous_comments == 'true'
       with:
         bodyContains: "[${{ inputs.tool_name }}]"
