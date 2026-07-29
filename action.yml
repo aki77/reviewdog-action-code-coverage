@@ -46,7 +46,7 @@ runs:
         # Determine OS and architecture
         OS=$(uname -s | tr '[:upper:]' '[:lower:]')
         ARCH=$(uname -m)
-        
+
         case "$OS" in
           linux)
             case "$ARCH" in
@@ -70,7 +70,7 @@ runs:
             exit 1
             ;;
         esac
-        
+
         echo "Downloading $BINARY for $OS/$ARCH"
         curl -L -o lcov_to_checkstyle "https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.4.0/$BINARY"
         chmod +x lcov_to_checkstyle
@@ -78,7 +78,7 @@ runs:
       uses: baptiste0928/cargo-install@f204293d9709061b7bc1756fec3ec4e2cd57dec0
       with:
         crate: lcov-util
-        version: "0.2.1"
+        version: "0.2.2"
     - uses: aki77/delete-pr-comments-action@56cee8fd1c739989119d537dd2e781fd30c15b54 # v3.2.0
       if: inputs.delete_previous_comments == 'true'
       with:
