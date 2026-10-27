@@ -32,3 +32,4 @@ See [action.yml](action.yml)
 | `reporter` | Reporter of reviewdog command [github-check,github-pr-check,github-pr-review]. | `github-pr-review` | no |
 | `tool_name` | Tool name to use for reviewdog reporter | `code-coverage` | no |
 | `delete_previous_comments` | Delete previous comments made by the same tool | `true` | no |
+| `reviewdog_version` | reviewdog version to use (e.g. `v0.20.3`) | `latest` | no |
