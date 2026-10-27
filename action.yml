@@ -34,13 +34,17 @@ inputs:
     description: "Delete previous comments made by the same tool."
     default: "true"
     required: false
+  reviewdog_version:
+    description: "reviewdog version to use (e.g. v0.20.3). Default is latest."
+    default: "latest"
+    required: false
 
 runs:
   using: composite
   steps:
     - uses: reviewdog/action-setup@d8a7baabd7f3e8544ee4dbde3ee41d0011c3a93f # v1.5.0
       with:
-        reviewdog_version: latest
+        reviewdog_version: ${{ inputs.reviewdog_version }}
     - shell: bash
       run: |
         # Determine OS and architecture
