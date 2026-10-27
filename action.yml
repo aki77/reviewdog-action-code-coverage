@@ -72,7 +72,7 @@ runs:
         esac
 
         echo "Downloading $BINARY for $OS/$ARCH"
-        curl -L -o lcov_to_checkstyle "https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.4.0/$BINARY"
+        curl -fsSL -o lcov_to_checkstyle "https://github.com/aki77/lcov_to_checkstyle/releases/download/v0.4.1/$BINARY"
         chmod +x lcov_to_checkstyle
     - name: Install lcov-util from crates.io
       uses: baptiste0928/cargo-install@8195d4f734a149db85385bb4102b42efcd373759
